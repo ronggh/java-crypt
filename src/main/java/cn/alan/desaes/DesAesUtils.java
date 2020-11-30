@@ -3,6 +3,7 @@ package cn.alan.desaes;
 import java.util.Base64;
 
 import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 public class DesAesUtils {
@@ -26,7 +27,8 @@ public class DesAesUtils {
         // ENCRYPT_MODE：加密模式
         // DECRYPT_MODE: 解密模式
         // 初始化加密模式和算法
-        cipher.init(Cipher.ENCRYPT_MODE, sks);
+        IvParameterSpec iv = new IvParameterSpec(key.getBytes());
+        cipher.init(Cipher.ENCRYPT_MODE, sks, iv);
         // 加密
         byte[] bytes = cipher.doFinal(input.getBytes());
 
@@ -51,7 +53,8 @@ public class DesAesUtils {
         Cipher cipher = Cipher.getInstance(transformation);
         // 指定密钥规则
         SecretKeySpec sks = new SecretKeySpec(key.getBytes(), algorithm);
-        cipher.init(Cipher.DECRYPT_MODE, sks);
+        IvParameterSpec iv = new IvParameterSpec(key.getBytes());
+        cipher.init(Cipher.DECRYPT_MODE, sks, iv);
         // 3. 解密，上面使用的base64编码，下面直接用密文
         byte[] bytes = cipher.doFinal(Base64.getDecoder().decode(input));
         // 因为是明文，所以直接返回

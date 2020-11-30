@@ -1,6 +1,8 @@
 package cn.alan.desaes;
 
 public class AesTest {
+    private final static String transformation = "AES/CBC/PKCS5Padding";
+
     public static void main(String[] args) throws Exception {
         String input = "中国";
         // AES加密算法，比较高级，所以key的大小必须是16个字节
@@ -25,7 +27,7 @@ public class AesTest {
      * @throws Exception
      */
     private static String encryptAes(String input, String key) throws Exception {
-        return DesAesUtils.encrypt(input, key, "AES", "AES");
+        return DesAesUtils.encrypt(input, key, transformation, "AES");
     }
 
     /**
@@ -40,7 +42,7 @@ public class AesTest {
      * @return: 原文
      */
     private static String decryptAes(String input, String key) throws Exception {
-        return DesAesUtils.decrypt(input, key, "AES", "AES");
+        return DesAesUtils.decrypt(input, key, transformation, "AES");
     }
 
 }

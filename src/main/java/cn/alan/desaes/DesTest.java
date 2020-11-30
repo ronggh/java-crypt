@@ -1,6 +1,9 @@
 package cn.alan.desaes;
 
 public class DesTest {
+    // private final static String transformation = "DES/CBC/NoPadding";
+    private final static String transformation = "DES/CBC/PKCS5Padding";
+
     public static void main(String[] args) throws Exception {
         // 原文
         String input = "中国";
@@ -24,7 +27,7 @@ public class DesTest {
      * @throws Exception
      */
     private static String encryptDES(String input, String key) throws Exception {
-        return DesAesUtils.encrypt(input, key, "DES", "DES");
+        return DesAesUtils.encrypt(input, key, transformation, "DES");
     }
 
     /**
@@ -38,6 +41,6 @@ public class DesTest {
      * @return: 原文
      */
     private static String decryptDES(String input, String key) throws Exception {
-        return DesAesUtils.decrypt(input, key, "DES", "DES");
+        return DesAesUtils.decrypt(input, key, transformation, "DES");
     }
 }
