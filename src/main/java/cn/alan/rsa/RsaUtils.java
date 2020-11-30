@@ -1,4 +1,4 @@
-package rsa;
+package cn.alan.rsa;
 
 import java.io.File;
 import java.security.*;

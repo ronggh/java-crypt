@@ -4,7 +4,7 @@ import java.security.Key;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 
-import rsa.RsaUtils;
+import cn.alan.rsa.RsaUtils;
 
 public class SignatureTest {
     public static void main(String[] args) throws Exception {

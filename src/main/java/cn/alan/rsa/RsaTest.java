@@ -1,4 +1,4 @@
-package rsa;
+package cn.alan.rsa;
 
 import java.security.Key;
 import java.security.PrivateKey;
@@ -13,14 +13,14 @@ public class RsaTest {
         System.out.println("publicKey Key ==> " + RsaUtils.key2String(publicKey));
 
         String privateKeyString = RsaUtils.key2String(privateKey);
-        RsaUtils.saveKey2File(privateKeyString, "pri.rsa");
+        RsaUtils.saveKey2File(privateKeyString, "pri.cn.alan.rsa");
 
         String publicKeyString = RsaUtils.key2String(publicKey);
-        RsaUtils.saveKey2File(publicKeyString, "pub.rsa");
+        RsaUtils.saveKey2File(publicKeyString, "pub.cn.alan.rsa");
 
         System.out.println("================= 从保存的文件中读取 Key ===========");
-        PrivateKey priKey = RsaUtils.readPrivateKeyFromFile("pri.rsa");
-        PublicKey pubKey = RsaUtils.readPublicKeyFromFile("pub.rsa");
+        PrivateKey priKey = RsaUtils.readPrivateKeyFromFile("pri.cn.alan.rsa");
+        PublicKey pubKey = RsaUtils.readPublicKeyFromFile("pub.cn.alan.rsa");
         System.out.println("从文件中读取的 private Key ==> " + RsaUtils.key2String(priKey));
         System.out.println("从文件中读取的 public Key ==> " + RsaUtils.key2String(pubKey));
 
