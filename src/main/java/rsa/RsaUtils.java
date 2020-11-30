@@ -54,8 +54,7 @@ public class RsaUtils {
         byte[] keyEncoded = key.getEncoded();
 
         // 对钥进行base64编码
-        String keyString = Base64.getEncoder().encodeToString(keyEncoded);
-        return keyString;
+        return Base64.getEncoder().encodeToString(keyEncoded);
     }
 
     /**
@@ -66,7 +65,7 @@ public class RsaUtils {
      * @throws Exception
      */
     public static void saveKey2File(String key, String fileName) throws Exception {
-        FileUtils.writeStringToFile(new File(fileName), key);
+        FileUtils.writeStringToFile(new File(fileName), key, "utf-8");
     }
 
     /**
@@ -78,7 +77,7 @@ public class RsaUtils {
      */
     public static PublicKey readPublicKeyFromFile(String fileName) throws Exception {
         //
-        String keyString = FileUtils.readFileToString(new File(fileName));
+        String keyString = FileUtils.readFileToString(new File(fileName), "utf-8");
         // 获取密钥工厂
         KeyFactory keyFactory = KeyFactory.getInstance(algorithm);
         // 构建密钥规范 进行Base64解码
@@ -96,7 +95,7 @@ public class RsaUtils {
      */
     public static PrivateKey readPrivateKeyFromFile(String fileName) throws Exception {
         //
-        String keyString = FileUtils.readFileToString(new File(fileName));
+        String keyString = FileUtils.readFileToString(new File(fileName), "utf-8");
         // 获取密钥工厂
         KeyFactory keyFactory = KeyFactory.getInstance(algorithm);
         // 构建密钥规范 进行Base64解码
