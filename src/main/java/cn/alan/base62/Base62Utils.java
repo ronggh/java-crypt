@@ -4,8 +4,9 @@ import java.io.ByteArrayOutputStream;
 
 public class Base62Utils {
     /**
+     * 
      * 特别注意： Base62编码与解码的key中，必须包含有“+/”这两个字符，<br/>
-     * 否则，会有出现一个数字不能正常解码
+     * 否则，会有出现一个数字不能正常解码,实际编码用不到这两个
      */
     private static char[] encodes = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".toCharArray();
     private static byte[] decodes = new byte[256];
