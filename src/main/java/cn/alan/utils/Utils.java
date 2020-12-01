@@ -4,6 +4,11 @@ import java.io.*;
 
 public class Utils {
 
+    /**
+     * 输出字节数组数据
+     * 
+     * @param bytes
+     */
     public static void print(byte[] bytes) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < bytes.length; i++) {
@@ -12,6 +17,13 @@ public class Utils {
         System.out.println(sb);
     }
 
+    /**
+     * 从文件中读取数据到字符串
+     * 
+     * @param path
+     * @return
+     * @throws IOException
+     */
     public static String file2String(String path) throws IOException {
         FileReader reader = new FileReader(new File(path));
         char[] buffer = new char[1024];
@@ -23,6 +35,14 @@ public class Utils {
         return sb.toString();
     }
 
+    /**
+     * 字符串写到文件中
+     * 
+     * @param data
+     *            字符串数据
+     * @param path
+     *            文件全路径名
+     */
     public static void string2File(String data, String path) {
         FileWriter writer = null;
         try {
@@ -39,9 +59,15 @@ public class Utils {
                 }
             }
         }
-
     }
 
+    /**
+     * 从输入流中读取数据到字符串
+     * 
+     * @param in
+     * @return
+     * @throws IOException
+     */
     public static String inputStream2String(InputStream in) throws IOException {
         int len = -1;
         byte[] buffer = new byte[1024];

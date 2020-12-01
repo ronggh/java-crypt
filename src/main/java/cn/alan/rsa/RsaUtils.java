@@ -105,7 +105,7 @@ public class RsaUtils {
     }
 
     /**
-     * 使进行解密
+     * 使用RSA算法进行解密
      * 
      * @param input
      *            原串
