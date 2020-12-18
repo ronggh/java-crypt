@@ -2,6 +2,10 @@ package cn.alan.base62;
 
 import java.io.ByteArrayOutputStream;
 
+/**
+ * @author alan
+ * @date 2020/12/2
+ */
 public class Base62Utils {
     /**
      * 
@@ -36,7 +40,7 @@ public class Base62Utils {
      * @return base62编码后的串
      */
     public static String encode(byte[] data) {
-        StringBuffer sb = new StringBuffer(data.length * 2);
+        StringBuilder sb = new StringBuilder(data.length * 2);
         int pos = 0, val = 0;
         for (int i = 0; i < data.length; i++) {
             val = (val << 8) | (data[i] & 0xFF);

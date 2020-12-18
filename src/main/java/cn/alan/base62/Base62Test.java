@@ -1,5 +1,8 @@
 package cn.alan.base62;
 
+/**
+ * @author alan
+ */
 public class Base62Test {
     public static void main(String[] args) {
         String input = "中国China";

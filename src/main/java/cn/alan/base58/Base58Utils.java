@@ -1,5 +1,9 @@
 package cn.alan.base58;
 
+/**
+ * @author alan
+ * @date 2020/12/1
+ */
 public class Base58Utils {
     /**
      * 字符集：没有数字0，大写字母O,大写字母I,小写字母l,和字符+,/
@@ -23,7 +27,7 @@ public class Base58Utils {
      * 
      * @param input
      *            原串
-     * @return
+     * @return base58编码串
      */
     public static String encode(String input) {
         return encode(input.getBytes());
@@ -34,7 +38,7 @@ public class Base58Utils {
      * 
      * @param input
      *            原串
-     * @return
+     * @return base58编码串
      */
     public static String encode(byte[] input) {
         if (input.length == 0) {
@@ -77,7 +81,8 @@ public class Base58Utils {
      * base58 解码
      * 
      * @param input
-     * @return
+     *            base58编码串
+     * @return base58解码后字节数组
      */
     public static byte[] decode(String input) {
         if (input.length() == 0) {
@@ -90,7 +95,7 @@ public class Base58Utils {
             char c = input.charAt(i);
 
             int digit58 = -1;
-            if (c >= 0 && c < 128) {
+            if (c < 128) {
                 digit58 = INDEXES[c];
             }
             if (digit58 < 0) {
@@ -128,11 +133,14 @@ public class Base58Utils {
     /**
      * 
      * @param number
+     *            byte[]
      * @param startAt
-     * @return
+     *            startAt
+     * @return byte
      */
     private static byte divMod58(byte[] number, int startAt) {
         int remainder = 0;
+
         for (int i = startAt; i < number.length; i++) {
             int digit256 = (int)number[i] & 0xFF;
             int temp = remainder * BASE_256 + digit256;
@@ -143,12 +151,21 @@ public class Base58Utils {
         return (byte)remainder;
     }
 
+    /**
+     * divMod256
+     * 
+     * @param number58
+     *            number58
+     * @param startAt
+     *            startAt
+     * @return divMod256
+     */
     private static byte divMod256(byte[] number58, int startAt) {
         int remainder = 0;
-        for (int i = startAt; i < number58.length; i++) {
-            int digit58 = (int)number58[i] & 0xFF;
+        for (int index = startAt; index < number58.length; index++) {
+            int digit58 = (int)number58[index] & 0xFF;
             int temp = remainder * BASE_58 + digit58;
-            number58[i] = (byte)(temp / BASE_256);
+            number58[index] = (byte)(temp / BASE_256);
             remainder = temp % BASE_256;
         }
 
@@ -159,9 +176,12 @@ public class Base58Utils {
      * copyOfRange
      * 
      * @param source
+     *            source
      * @param from
+     *            from
      * @param to
-     * @return
+     *            to
+     * @return byte[]
      */
     private static byte[] copyOfRange(byte[] source, int from, int to) {
         byte[] range = new byte[to - from];
